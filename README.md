@@ -5,7 +5,7 @@
 
 1. Obtener la lista de todos los menús con sus precios
 
-´´´mysql
+```MySQL
 
 SELECT nombre, precio
 FROM menus;
@@ -27,7 +27,7 @@ FROM menus;
 
 2. Encontrar todos los pedidos realizados por el cliente 'Juan Perez'
 
-´´´mysql
+```MySQL
 
 SELECT p.id, p.fecha, p.total
 FROM pedidos p
@@ -46,7 +46,7 @@ WHERE c.nombre = 'Juan Perez';
 
 3. Listar los detalles de todos los pedidos, incluyendo el nombre del menú, cantidad y precio unitario
 
-´´´mysql
+```MySQL
 SELECT dp.id_pedido, m.nombre AS menu, dp.cantidad, dp.precio_unitario
 FROM detallespedidos dp
 JOIN menus m ON dp.id_menu = m.id;
@@ -103,7 +103,7 @@ JOIN menus m ON dp.id_menu = m.id;
 
 4. Calcular el total gastado por cada cliente en todos sus pedidos
 
-´´´mysql
+```MySQL
 
 SELECT c.nombre, SUM(p.total) AS total_gastado
 FROM clientes c
@@ -131,7 +131,7 @@ GROUP BY c.nombre;
 
 5. Encontrar los menús con un precio mayor a $10
 
-´´´mysql
+```MySQL
 
 SELECT nombre, precio
 FROM menus
@@ -149,7 +149,7 @@ WHERE precio > 10.00;
 
 6. Obtener el menú más caro pedido al menos una vez
 
-´´´mysql
+```MySQL
 
 SELECT m.nombre, m.precio
 FROM menus m
@@ -169,7 +169,7 @@ LIMIT 1;
 
 7. Listar los clientes que han realizado más de un pedido
 
-´´´mysql
+```MySQL
 
 SELECT c.nombre, COUNT(p.id) AS numero_de_pedidos
 FROM clientes c
@@ -194,8 +194,7 @@ HAVING COUNT(p.id) > 1;
 
 8. Mostrar el pedido más reciente de cada cliente
 
-
-´´´mysql
+```MySQL
 
 SELECT c.nombre, p.id, p.fecha, p.total
 FROM clientes c
@@ -227,7 +226,7 @@ WHERE (c.id, p.fecha) IN (
 ´´
 9. Obtener el detalle de pedidos (menús y cantidades) para el cliente 'Juan Perez'.
 
-´´´mysql
+```MySQL
 
 SELECT p.id AS pedido_id, m.nombre AS menu, dp.cantidad
 FROM pedidos p
